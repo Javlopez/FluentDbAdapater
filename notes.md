@@ -15,7 +15,7 @@ type School struct {
 
 ```go
 //main.go
-// Multiple Saves
+// Multiple Saves if empty use default values of the db
 f := NewFluent()
 f.Insert(models.School{
   ID: 123,
@@ -48,6 +48,13 @@ f := NewFluent()
 f.Select("name", "id").From(models.School).Scan(models.School) 
 
 f.Select("name", "id").From(models.School).RowScan(models.School)
+
+// Insert with Fake will use faker to mock default data
+f := NewFluentWithFake(logger)
+f.Insert(models.School{
+  ID: 123,
+  Name: "My School"
+}).Insert(models.Student{}, use: [models.Student.ID])
 
 ```
 
