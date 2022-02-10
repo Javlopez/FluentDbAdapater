@@ -1,4 +1,0 @@
-idea:
-
-s := NewFluentDB()
-s.Insert(models.Case{}).Insert(models.Vet{}, copy: [models.Case.ID])
