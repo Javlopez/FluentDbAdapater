@@ -1,7 +1,12 @@
 idea:
 ```go
 //models.go
+type FluentModelBase struct{
+ TableName string
+}
+
 type Student struct {
+ FluentModelBase
  ID int
  SchoolID int
 }
@@ -19,7 +24,8 @@ type School struct {
 f := NewFluent()
 f.Insert(models.School{
   ID: 123,
-  Name: "My School"
+  Name: "My School",
+  TableName: "schoooools"
 }).Insert(models.Student{}, use: [models.Student.ID])
 ```
 
